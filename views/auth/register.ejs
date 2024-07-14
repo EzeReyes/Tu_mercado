@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/logoTuMercado.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>TuMercado</title>
+</head>
+<body class="body-register">
+    <header class="header">
+        <img class="imgCruz" src="/images/x-symbol-svgrepo-com.svg" alt="cruxSvg"/>
+        <button class="buttonMenu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+        </button>
+        <nav class="nav activo">
+            <ul>
+                <div class="logo">
+                    <div>
+                        <img src="/images/logoTuMercado.png" alt="TuMercado-imagen">
+                        <span class="logoTitulo">TuMercado</span>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <main class="mainLogin">
+        <h3 class="mainLogin-titulo">Bienvenido, creé un Usuario</h3>
+            <form class="inicie" method="POST" action="/auth/register/?_csrf=<%= csrfToken %>">
+                <div>
+                    <input type="hidden" name="_csrf" value="<%=csrfToken  %>" >
+                    <label for="Nombre">Nombre:</label>
+                    <input type="text" name="Nombre" id="Nombre" value="<%= formData ? formData.Nombre : '' %>">
+                </div>
+                <div>
+                    <label for="Apellido">Apellido:</label>
+                    <input type="text" name="Apellido" id="Apellido" value="<%= formData ? formData.Apellido : '' %>">
+                </div>
+                <div>
+                    <label for="Direccion">Dirección:</label>
+                    <input type="text" name="Direccion" id="Direccion" value="<%= formData ? formData.Direccion : '' %>">
+                </div>
+                <div>
+                    <label for="Telefono">Teléfono:</label>
+                    <input type="text" name="Telefono" id="Telefono" value="<%= formData ? formData.Telefono : '' %>">
+                </div>
+                <div>
+                    <label for="EmailRegistro">Email:</label>
+                    <input type="email" name="EmailRegistro" id="EmailRegistro" value="<%= formData ? formData.EmailRegistro : '' %>">
+                </div>
+                <div>
+                    <label for="PasswordRegistro">Contraseña:</label>
+                    <input type="password" name="PasswordRegistro" id="PasswordRegistro">
+                </div>
+                <div class="a2">
+                    <a href="/auth/login">TIENE USUARIO?</a>
+                </div>
+                <button type="submit">Registrarse</button>
+            </form>
+            <% if (errors && errors.length > 0) { %>
+                <div class="erroresForms">
+                    <% errors.forEach(function(error) { %>
+                        <h6><%= error.msg %></h6>
+                    <% }) %>
+                    </div>
+            <% } %>
+        </div>
+    </main>
+    <footer>
+        <span>©️Tu Mercado 2024</span>
+    </footer>
+    <script src="/script.js"></script>
+</body>
+</html>

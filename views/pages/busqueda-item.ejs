@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/logoTuMercado.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Detalle del Producto</title>
+</head>
+<body>
+    <header class="header">
+        <img class="imgCruz" src="/images/x-symbol-svgrepo-com.svg" alt="cruxSvg"/>
+        <button class="buttonMenu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+        </button>
+    
+        <nav class="nav activo">
+            <ul>
+                <div class="logo">
+                    <a href="/">
+                        <img src="/images/logoTuMercado.png" alt="TuMercado-imagen">
+                        <span class="logoTitulo">TuMercado</span>
+                    </a>
+                </div>
+                <li><a href="/pages/productos">Productos</a></li>
+                <li><a href="/pages/sobreNosotros">Sobre Nosotros</a></li>
+                <li><a href="/pages/contacto">Contacto</a></li>
+                <li class="numero"><a href="/pages/carrito"><img src="/images/carrito.png" alt="carrito"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <div class="tituloSeccion">
+                <h2>Resultados de la Busqueda:</h2>
+            </div>
+            <div class="gridItem">
+                <% if (resultsBusq.length > 0) { %>
+                    <% resultsBusq.forEach(producto => { %>
+                        <div class="articulo">
+                            <h6><%= producto.Nombre %></h6>
+                            <img src="<%= producto.Foto_Url %>" alt="<%= producto.Nombre %>"/>
+                            <p><%= producto.Descripcion %></p>
+                            <p>Precio: <%= producto.Precio %></p>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p>No se encontraron productos para la búsqueda realizada.</p>
+                <% } %>
+            </div>
+        </section>
+    </main>
+    <script src="/script.js"></script>
+    <footer>
+        <span>©️Tu Mercado 2024</span>
+    </footer>    
+</body>
+</html>

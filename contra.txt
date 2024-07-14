@@ -1,0 +1,30 @@
+A continuación, le dejo unos usuarios habilitados y confirmados para su libre acceso:
+
+Operaciones con usuarios:
+Credenciales:
+•	robin@gmail.com
+•	robin2024
+---------------------------------------
+•	benicio@gmail.com
+•	Flores2546
+
+Operaciones con el admin: 
+Credenciales: 
+•	ezequiel@gmail.com 
+•	Boca2024
+
+___________________________________
+Credenciales de los sistemas utilizados
+MySql:
+BD_NOMBRE=tu_mercado
+BD_USER=root
+BD_PASS=1234
+BD_HOST=localhost
+
+Mailtrap:
+EMAIL_HOST=sandbox.smtp.mailtrap.io
+EMAIL_PORT=2525
+EMAIL_USER=e53aefcc6b7ed8
+EMAIL_PASS=7d8f31d60c9eb5
+
+BACKEND_URL=http://localhost

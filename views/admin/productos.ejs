@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/logoTuMercado.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/panel-style.css">
+    <title>Edite un Producto</title>
+        <%- include('partials/header') %>
+</head>
+<body>
+    <main>
+        <div class="title-flex">
+            <h1>Crear Producto</h1>
+            <a href="/admin/panel" class="back">Volver</a>
+        </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Foto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% results.forEach (producto => { %> 
+                <tr>
+                    <td><%= producto.Producto_ID %></td>
+                    <td><%= producto.Nombre %></td>
+                    <td><%= producto.Descripcion %></td>
+                    <td><%= producto.Precio %></td>
+                    <td><%= producto.Stock %></td>
+                    <td>
+                        <img src="<%= producto.Foto_Url.startsWith('http') ? producto.Foto_Url : '/uploads/productos/' + producto.Foto_Url %>" alt="Foto de <%= producto.Nombre %>" width="50" height="50">
+                    </td>
+                    <td class="flex-btn"> 
+                        <a class="eliminar bc-green"  href="/admin/editar-producto/<%= producto.Producto_ID %>">Editar</a>
+                        <form id="form-<%= producto.Producto_ID %>" method="POST">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                            <input type="hidden" name="id" value="<%= producto.Producto_ID %>">
+                            <button class="eliminar bc-red" type="submit">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    </main>
+</body>
+<%- include('partials/footer') %>
+
+<script src="/script.js"></script>
+</body>
+</html>

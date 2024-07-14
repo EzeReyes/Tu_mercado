@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/logoTuMercado.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/panel-style.css">
+    <title>Edite un Producto</title>
+        <%- include('partials/header') %>
+</head>
+<body>
+    <div>
+    <h1>Producto Agregado</h1>
+        <p>Producto N°<%= result.insertId %>, Nombre: <%= Nombre %></p>
+        <p>Serás redirigido en breve...</p>
+    </div>
+        <script>
+            setTimeout(function() {
+                window.location.href = '/admin/panel';
+            }, 3000); // 3000 milisegundos = 3 segundos
+        </script>
+<%- include('partials/footer') %>
+</body>
+</html>

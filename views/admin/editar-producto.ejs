@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/logoTuMercado.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/panel-style.css">
+    <title>Edite un Producto</title>
+    <%- include('partials/header') %>
+</head>
+<body>
+    <main>
+        <div class="title-flex">
+            <h1>Editar Producto <%= result.Nombre %></h1> 
+            <a href="/admin/productos" class="back">Volver</a>
+        </div>
+        <div class="form-edit">
+            <form method="POST">
+                <input type="hidden" name="_csrf" value="<%=csrfToken  %>" >
+                <label for="Nombre">Nombre:</label>
+                <input type="text" id="Nombre" name="Nombre" value="">
+                <br>
+                <label for="Descripcion">Descripción:</label>
+                <input type="text" id="Descripcion" name="Descripcion" value="">
+                <br>
+                <label for="Precio">Precio:</label>
+                <input type="number" id="Precio" name="Precio" value="">
+                <br>
+                <label for="Stock">Stock:</label>
+                <input type="number" id="Stock" name="Stock" value="">
+                <br>
+                <button type="submit" >Guardar Cambios</button>
+            </form>
+            <img class="imgEdit" src="<%= result.Foto_Url %>" alt="Foto de  <%= result.Nombre %>" width="200" height="200">
+        </div>
+    </main>
+</body>
+<%- include('partials/footer') %>
+
+<script src="/script.js"></script>
+</body>
+</html>

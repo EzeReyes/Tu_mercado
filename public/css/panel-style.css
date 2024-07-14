@@ -1,0 +1,197 @@
+.panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
+    margin-left: 10rem;
+    height: 20rem;
+    width: auto;
+}
+
+.navbar {
+    background-color:transparent;
+    color: white;
+    text-align: center;
+}
+
+.panel a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #ffffff18;
+    font-size: 2rem;
+    border-radius: 1px;
+    border-radius: 2px;
+}
+
+.title-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.title-flex h1 {
+    color: #fff;
+}
+
+.back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #7a7f85;
+    border-radius: 4px;
+    padding: 1px;
+    font-size: 16px;
+    text-decoration: none;
+    height: 2rem;
+    width: 4rem;
+}
+
+.back:hover {
+    background-color: #007BFF;
+    color: gainsboro;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.panel a:hover {
+    background-color: #0f010157;
+    transition: background-color 0.3s;
+}
+
+tr, a {
+    text-decoration: none;
+    color: #fff;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.flex-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bc-red {
+    background-color: #ff0000;
+}
+
+.bc-green {
+    background-color: #00ff00;
+}
+
+.eliminar {
+    color: #fff;
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.bc-red:hover {
+    background-color: #ff000083;
+    transition: background-color 0.3s;
+    color: #7a7f85;
+}
+
+.bc-green:hover {
+    background-color: greenyellow;
+    transition: background-color 0.3s;
+    color: #7a7f85;
+}
+
+
+.form-edit {
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #007BFF;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+    background-color: #7a7f85;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-logout .btn {
+    background-color: #7a7f85;
+}
+
+.btn-logout span {
+    color: #000000;
+}
+
+.btn-logout .btn:hover {
+    background-color: #0056b3;
+}
+
+.formInfo h3 {
+    color: #fff;
+}
+
+.imgEdit {
+    width: 200px;
+    height: 200px;
+    border-radius: 5%;
+}
+
+.bg-main {
+    background-image: url('../images/img-b&w.jpg');    
+    background-size: cover;
+}

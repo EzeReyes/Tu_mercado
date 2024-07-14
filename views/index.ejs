@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/logoTuMercado.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>TuMercado</title>
+</head>
+<header class="header">
+    <img class="imgCruz" src="/images/x-symbol-svgrepo-com.svg" alt="cruxSvg"/>
+    <button class="buttonMenu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+    </button>
+
+    <nav class="nav activo">
+        <ul>
+            <div class="logo">
+                <a href="/">
+                    <img src="/images/logoTuMercado.png" alt="TuMercado-imagen">
+                    <span class="logoTitulo">TuMercado</span>
+                </a>
+            </div>
+
+            <div class="buscador">
+                <form id="miFormulario" method="POST" action="/pages/busqueda-item">
+                    <input type="text" id="busqueda" name="busqueda" class="buscador-input" placeholder="Buscar Producto" autocomplete="off">
+                    <button>
+                        <img src="/images/lupa.png" alt="LUPA">
+                    </button>
+                </form>
+            </div>
+
+            <li><a href="/pages/productos">Productos</a></li>
+            <li><a href="/pages/sobreNosotros">Sobre Nosotros</a></li>
+            <li><a href="/pages/contacto">Contacto</a></li>
+            <li class="numero"><a href="/pages/carrito"><img src="/images/carrito.png" alt="carrito"></a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+    <main>
+        <div class="titular">
+            <h1>Encontrá lo que buscas en <strong>Tu Mercado</strong></h1>
+        </div>
+        <div class="enlaceALogin">
+            <span><%= message %></span>
+            <a href="/pages/contacto">¿Necesitas ayuda? 📞</a>
+            <% if (user) { %>
+                <a href="/user/perfil">Tu Perfil</a>
+                <!-- Botón de cierre de sesión -->
+                <form action="/logout" method="get">
+                    <button type="submit">Cerrar sesión</button>
+                </form>
+            <% } else { %>
+                <!-- Enlace de iniciar sesión si no está autenticado -->
+                <a href="/auth/login">Inicie sesión</a>
+            <% } %>
+                </div>
+        <div class="containerArticulos">
+            <div class="productos">
+                <% results.forEach(producto => { %>
+                <div class="articulo">
+                    <a href="/pages/item/<%= producto.Producto_ID %>"><h6><%= producto.Nombre %></h6></a>
+                    <img src="<%= producto.Foto_Url %>" alt="<%= producto.Nombre %>"/>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    
+        <div class="inicieORegistre">
+            <h4>Publica en Tu Mercado el producto que desees vender</h4>
+            <a href="/auth/login">Inicia Sesión</a>
+            <a href="/auth/register">Registrarse</a>
+        </div>
+    </main>
+    <footer>
+        <span>©️Tu Mercado 2024</span>
+    </footer>
+    <script src="/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/logoTuMercado.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/panel-style.css">
+    <title>Panel de Administrador</title>
+    <%- include('partials/header') %>
+</head>
+<body>
+    <main class="bg-main">
+        <div class="panel">
+            <a href="/admin/crear-producto">Crear Producto</a>
+            <a href="/admin/productos">Modificar Producto</a>
+            <a href="/admin/users">Usuarios</a>
+        </div>
+    </main>
+    <%- include('partials/footer') %>
+    <script src="/script.js"></script>
+</body>
+</html>

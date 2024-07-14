@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/logoTuMercado.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>TuMercado</title>
+</head>
+<header class="header">
+    <img class="imgCruz" src="/images/x-symbol-svgrepo-com.svg" alt="cruxSvg"/>
+    <button class="buttonMenu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+    </button>
+
+    <nav class="nav activo">
+        <ul>
+            <div class="logo">
+                <a href="/">
+                    <img src="/images/logoTuMercado.png" alt="TuMercado-imagen">
+                    <span class="logoTitulo">TuMercado</span>
+                </a>
+            </div>
+        </ul>
+    </nav>
+</header>
+<body>
+    <main>
+        <div class="titular">
+            <h1><strong>Tu Perfil</strong></h1>
+        </div>
+        <div class="barra-user">
+            <ul>
+                <a href="/pages/contacto">¿Necesitas ayuda? 📞</a>
+                <a href="/">Volver al Menú Principal</a>
+            </ul>
+        </div>
+        <div class="div-infoUser">
+            <% resultsSelect.forEach(user => { %>
+            <div class="editUser">
+                <h4><%= user.Nombre %> <%= user.Apellido %></h4>
+                <img class="imgUser" src="<%= user.foto_user ? '/uploads/' + user.foto_user : '/images/perfil.jpeg' %>" alt="userNotPhoto">
+                <form action="/user/editar-perfil/?_csrf=<%= csrfToken %>" method="POST" enctype="multipart/form-data">
+                <div class="div-elem-form-edit">
+                    <div>
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <input type="hidden" name="currentPhoto" value="<%= user.foto_user %>">
+                        <input type="file" name="archivo" id="archivo" accept="image/jpeg, image/png">
+                        <button class="uploadPhotoUser" type="submit">Subir una Foto</button>
+                    </div>
+                    <div class="elem-form-edit">
+                        <input type="hidden" name="_csrf" value="<%=csrfToken  %>" >
+                        <label for="Nombre">Nombre:</label>
+                        <input type="text" name="Nombre" id="Nombre" value="<%= formData ? user.Nombre : '' %>">
+                    </div>
+                    <div class="elem-form-edit">
+                        <label for="Apellido">Apellido:</label>
+                        <input type="text" name="Apellido" id="Apellido" value="<%= formData ? user.Apellido : '' %>">
+                    </div>
+                    <div class="elem-form-edit">
+                        <label for="Direccion">Dirección:</label>
+                        <input type="text" name="Direccion" id="Direccion" value="<%= formData ? user.Direccion : '' %>">
+                    </div>
+                    <div class="elem-form-edit">
+                        <label for="Telefono">Teléfono:</label>
+                        <input type="text" name="Telefono" id="Telefono" value="<%= formData ? user.Telefono : '' %>">
+                    </div>
+                    <div class="elem-form-edit">
+                        <label for="Email">Email:</label>
+                        <input type="email" name="Email" id="EmailRegistro" value="<%= formData ? user.Email : '' %>">
+                    </div>
+                    <div class="elem-form-edit">
+                        <label for="Password">Contraseña:</label>
+                        <input type="hidden" name="stored-pass" id="stored-pass" value="<%= user.Password %>">
+                        <input type="password" name="Password" id="pass-edit" class="password" value="<%= formData ? user.Password : '' %>" disabled>
+                        <span class="toggle-password" onclick="togglePassword('pass-edit')">👁️</span>
+                        <button type="button" id="btn-no-disabled">Modificar Contraseña</button>
+                    </div>
+                </div>    
+                    <button type="submit">Modificar</button>
+                </form>
+                <% }); %>
+                </div>
+            </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <span>©️Tu Mercado 2024</span>
+    </footer>
+    <script src="/script.js"></script>
+</body>
+</html>

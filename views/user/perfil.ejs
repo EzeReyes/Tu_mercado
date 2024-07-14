@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/logoTuMercado.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>TuMercado</title>
+</head>
+<header class="header">
+    <img class="imgCruz" src="/images/x-symbol-svgrepo-com.svg" alt="cruxSvg"/>
+    <button class="buttonMenu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+    </button>
+
+    <nav class="nav activo">
+        <ul>
+            <div class="logo">
+                <a href="/">
+                    <img src="/images/logoTuMercado.png" alt="TuMercado-imagen">
+                    <span class="logoTitulo">TuMercado</span>
+                </a>
+            </div>
+        </ul>
+    </nav>
+</header>
+<body>
+    <main>
+        <div class="titular">
+            <h1><strong>Tu Perfil</strong></h1>
+        </div>
+        <div class="barra-user">
+            <ul>
+                <a href="/pages/contacto">¿Necesitas ayuda? 📞</a>
+                <a href="/user/editar-perfil">Editar Información</a>
+                <a href="/user/compras">Tus Compras</a>
+                <a href="/">Volver al Menú Principal</a>
+            </ul>
+        </div>
+        <div class="div-infoUser">
+            <% results.forEach(user => { %>
+            <div class="infoUser">
+                <h4><%= user.Nombre %> <%= user.Apellido %></h4>
+                <img class="imgUser" src="<%= user.foto_user ? '/uploads/' + user.foto_user : '/images/perfil.jpeg' %>" alt="userNotPhoto">
+                <form method="POST" action="/user/perfil/?_csrf=<%= csrfToken %>"  enctype="multipart/form-data">
+                    <input type="file" name="archivo" id="archivo" accept="image/jpeg, image/png" required>
+                    <button class="uploadPhotoUser" type="submit">Subir una Foto</button>
+                </form>
+                <div class="sombra">
+                    <h5>Telefono: <%= user.Telefono %></h5>
+                </div>
+                <div class="sombra">
+                    <h5>Domicilio: <%= user.Direccion %></h5>
+                </div>
+                <div class="sombra">
+                    <h5>Email: <%= user.Email %></h5>
+                </div>
+                <!-- <h5><%= user.Password %></h5> -->
+            </div>
+            <% }); %>
+        </div>
+    </main>
+    <footer>
+        <span>©️Tu Mercado 2024</span>
+    </footer>
+    <script src="/script.js"></script>
+</body>
+</html>

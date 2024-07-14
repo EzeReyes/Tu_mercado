@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/logoTuMercado.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/panel-style.css">
+    <title>Edite un Producto</title>
+    <%- include('partials/header') %>
+</head>
+<body>
+    <main>
+        <% resultsForId.forEach(user => { %>
+            <div class="title-flex">
+                <h1>Editar Usuario n°<%= user.Cliente_ID %>, <%= user.Nombre + ' ' +  user.Apellido %> </h1>    
+                <a href="/admin/users" class="back">Volver</a>
+            </div>
+        <div class="form-edit">
+            <form method="POST" action="/admin/editar-usuario/<%= user.Cliente_ID %>?_csrf=<%= csrfToken %>"  enctype="multipart/form-data">
+                <div>
+                    <input type="hidden" name="currentPhoto" value="<%= user.foto_user %>">
+                    <input type="file" name="archivo" id="archivo" accept="image/jpeg, image/png">
+                    <button class="uploadPhotoUser" type="submit">Subir una Foto</button>
+                </div>
+        </div>        
+                <div class="elem-form-edit">
+                    <label for="Nombre">Nombre:</label>
+                    <input type="text" name="Nombre" id="Nombre" value="<%= formData ? user.Nombre : '' %>">
+                </div>
+                <div class="elem-form-edit">
+                    <label for="Apellido">Apellido:</label>
+                    <input type="text" name="Apellido" id="Apellido" value="<%= formData ? user.Apellido : '' %>">
+                </div>
+                <div class="elem-form-edit">
+                    <label for="Direccion">Dirección:</label>
+                    <input type="text" name="Direccion" id="Direccion" value="<%= formData ? user.Direccion : '' %>">
+                </div>
+                <div class="elem-form-edit">
+                    <label for="Telefono">Teléfono:</label>
+                    <input type="text" name="Telefono" id="Telefono" value="<%= formData ? user.Telefono : '' %>">
+                </div>
+                <div class="elem-form-edit">
+                    <label for="Email">Email:</label>
+                    <input type="email" name="Email" id="EmailRegistro" value="<%= formData ? user.Email : '' %>">
+                </div>
+                <div class="elem-form-edit">
+                    <label for="Password">Contraseña:</label>
+                    <input type="hidden" name="stored-pass" id="stored-pass" value="<%= user.Password %>">
+                    <input type="password" name="Password" id="pass-edit" class="password" value="<%= formData ? user.Password : '' %>" disabled>
+                    <span class="toggle-password" onclick="togglePassword('pass-edit')">👁️</span>
+                    <button type="button" id="btn-no-disabled">Modificar Contraseña</button>
+                </div>
+                </div>
+            </div>    
+                <button type="submit">Guardar Cambios</button>
+        </form>
+        <% }); %>
+    </main>
+</body>
+<%- include('partials/footer') %>
+
+<script src="/script.js"></script>
+</body>
+</html>

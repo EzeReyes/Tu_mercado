@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/logoTuMercado.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/panel-style.css">
+    <title>Usuarios</title>
+        <%- include('partials/header') %>
+</head>
+<body>
+
+    <main>
+        <div class="title-flex">
+            <h1>Usuarios</h1>
+            <a href="/admin/panel" class="back">Volver</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                    <th>Domicilio</th>
+                    <th>Imagen Usuario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach (user => { %>
+                    <tr>
+                        <td><%= user.Cliente_ID %></td>
+                        <td><%= user.Nombre %></td>
+                        <td><%= user.Email %></td>
+                        <td><%= user.Telefono %></td>
+                        <td><%= user.Direccion %></td>
+                        <td>
+                            <img src="<%= user.foto_user ? '/uploads/' + user.foto_user : '/images/perfil.jpeg' %>" alt="Foto de <%= user.Nombre %>" width="50" height="50">
+                        </td>
+                        <td class="flex-btn"> 
+                            <a class="eliminar bc-green"  href="/admin/editar-usuario/<%= user.Cliente_ID %>">Editar</a>
+                            <form id="form-<%= user.Cliente_ID %>" method="POST">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                                <input type="hidden" name="id" value="<%= user.Cliente_ID %>">
+                                <button class="eliminar bc-red" type="submit">Eliminar</button>
+                            </form>
+                        </td>        
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </main>    
+</body>
+<%- include('partials/footer') %>
+<script src="/script.js"></script>
+</body>
+</html>
