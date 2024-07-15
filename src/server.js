@@ -7,6 +7,7 @@ const csrf = require('csurf');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const session = require('express-session');
+const bcrypt = require('bcrypt')
 
 // Importación de Rutas
 const ProductosRoute = require('../routes/productosRoute');

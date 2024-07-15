@@ -1,7 +1,7 @@
 const { validationResult, check } = require('express-validator');
 const db = require('../db/db');
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const bcrypt = require('bcrypt');
 const config = require('../config/config');
 const { emailRegistro, emailOlvidePassword} = require('../helpers/emails');
 const { users } = require('./adminController');
