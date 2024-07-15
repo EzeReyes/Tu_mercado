@@ -8,8 +8,26 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const session = require('express-session');
 const { createClient } = require('redis');
-const  RedisStore  = require('connect-redis');
+const RedisStore = require('connect-redis').default;
 
+
+// Crear el cliente de Redis
+const redisClient = createClient({
+  legacyMode: true,
+  url: process.env.REDIS_URL
+});
+
+// Conectar el cliente de Redis
+redisClient.connect().catch(console.error);
+
+// Configurar la sesión
+app.use(session({
+    store: new RedisStore({ client: redisClient, prefix: 'myapp:' }),
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false } // Cambia a true si usas HTTPS
+}));
 
 // Importación de Rutas
 const ProductosRoute = require('../routes/productosRoute');
@@ -51,20 +69,8 @@ const upload = multer({
     }
 });
 
-const redisClient = createClient({
-    legacyMode: true,
-    url: process.env.REDIS_URL || 'redis://localhost:6379'
-  });
 
-redisClient.connect().catch(console.error);
 
-app.use(session({
-  store: new RedisStore({ client: redisClient }),
-  secret: 'your-secret-key',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { secure: false } // Cambia a true si usas HTTPS
-}));
 
 // Configuración de CSRF
 const csrfProtection = csrf({ cookie: true });
