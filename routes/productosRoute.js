@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const bcrypt = require('bcrypt');
 
 const router = express.Router();
 const {getAllProducts, getProductById, getProductForSearch, AgregarAlCarrito} = require('../controllers/productoController');

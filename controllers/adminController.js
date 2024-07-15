@@ -1,5 +1,5 @@
 const db = require('../db/db');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const loginAdmin = (req, res) => {
     const csrfToken = req.csrfToken();
