@@ -13,8 +13,10 @@ const RedisStore = require('connect-redis').default;
 
 // Crear el cliente de Redis
 const redisClient = createClient({
-  legacyMode: true,
-  url: process.env.REDIS_URL
+    host: '127.0.0.1',
+    port: 6379,
+    legacyMode: true,
+    url: process.env.REDIS_URL
 });
 
 // Conectar el cliente de Redis
