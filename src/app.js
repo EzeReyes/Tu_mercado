@@ -7,29 +7,6 @@ const csrf = require('csurf');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const session = require('express-session');
-const { createClient } = require('redis');
-const RedisStore = require('connect-redis').default;
-
-
-// Crear el cliente de Redis
-const redisClient = createClient({
-    host: '127.0.0.1',
-    port: 6379,
-    legacyMode: true,
-    url: process.env.REDIS_URL
-});
-
-// Conectar el cliente de Redis
-redisClient.connect().catch(console.error);
-
-// Configurar la sesión
-app.use(session({
-    store: new RedisStore({ client: redisClient, prefix: 'myapp:' }),
-    secret: 'your-secret-key',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false } // Cambia a true si usas HTTPS
-}));
 
 // Importación de Rutas
 const ProductosRoute = require('../routes/productosRoute');
@@ -71,8 +48,13 @@ const upload = multer({
     }
 });
 
-
-
+// Configuración de la sesión
+app.use(session({
+    secret: 'mi-secreto',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
 
 // Configuración de CSRF
 const csrfProtection = csrf({ cookie: true });
@@ -98,6 +80,6 @@ app.set('view engine', 'ejs');
 
 // Puerto de escucha
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto: http://localhost:${PORT}`);
 });
